@@ -133,7 +133,7 @@
             ));
         }
 
-        public function delete($id){
+        public static function delete($id){
             $sql = new Sql();
 
             $sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID",array(
