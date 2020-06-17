@@ -8,6 +8,12 @@
         private $deslogin;
         private $dtcadstro;
 
+        //MÉTODO CONSTRUTOR
+        public function __construct($login = "",$senha = ""){
+            $this->setSenha($senha);
+            $this->setLogin($login);
+        }
+
         //GETS AND SETS:INICIO
         public function getSenha(){
             return $this->dessenha;
@@ -51,12 +57,7 @@
             ));
 
             if(count($res)>0){
-                $row = $res[0];
-
-                $this-> setIdusuario($row['idusuario']);
-                $this-> setSenha($row['dessenha']);
-                $this-> setLogin($row['deslogin']);
-                $this-> setDtcadastro(new DateTime($row['dtcadastro']));                
+                $this->setData($res[0]);
             }
         }
 
@@ -67,6 +68,7 @@
             return $sql->select("SELECT * FROM tb_usuarios ORDER BY deslogin");
         }
 
+        //FUNÇÃO PARA PESQUISA POR NOME
         public function search($value){
             $sql = new Sql();
 
@@ -75,6 +77,7 @@
             ));
         }
 
+        //FUNÇÃO DE VALIDAÇÃO DE LOGIN
         function login($login, $senha){
             $sql = new Sql();
 
@@ -84,20 +87,39 @@
             ));
 
             if (count($res)>0) {
-                $row = $res[0];
-
-                $this-> setIdusuario($row['idusuario']);
-                $this-> setSenha($row['dessenha']);
-                $this-> setLogin($row['deslogin']);
-                $this-> setDtcadastro(new DateTime($row['dtcadastro']));     
+                $this->setData($res[0]);
             }else {
                 throw new Exception ("Login e/ou senha inválidos.");
             }
+        }
 
+        //FUNÇÃO PARA SETAR OS DADOS
+        public function setData($data){
 
+            $this-> setIdusuario($data['idusuario']);
+            $this-> setSenha($data['dessenha']);
+            $this-> setLogin($data['deslogin']);
+            $this-> setDtcadastro(new DateTime($data['dtcadastro']));
 
         }
 
+        //FUNÇÃO PARA INSERIR OS DADOS NO BDD POR MEIO DE UMA PROCEDURE
+        public function insert(){
+            $sql = new Sql();
+
+            $res = $sql-> select("CALL sp_usuarios_insert(:LOGIN, :SENHA)", array(
+                ":LOGIN"=>$this-> getLogin(),
+                ":SENHA"=>$this-> getSenha()
+            ));
+
+            if (count($res) > 0) {
+                $this->setData($res[0]);
+            }else {
+                echo "deu erro mano";
+            }
+        }
+
+        //FUNÇÃO PARA TRNSFORMAR O RETORNO DO OBJETO EM UMA STRING
         public function __toString() {
             return json_encode(array(
                 "idusuario"=>$this->getIdusuario(),

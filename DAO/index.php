@@ -15,7 +15,11 @@
     //echo json_encode($pesq);
 
     //FUNÇÃO DE VALIDAÇÃO DE LOGIN E SENHA
-    $usuario = new Usuario();
-    $usuario -> login("Pedro Lucas","221133");
+    //$usuario = new Usuario();
+    //$usuario -> login("Pedro Lucas","221133");
+    //echo $usuario;
+
+    $usuario = new Usuario("Jennifer","tinder");
+    $usuario->insert();
     echo $usuario;
 ?>
