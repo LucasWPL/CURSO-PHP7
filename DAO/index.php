@@ -1,10 +1,21 @@
 <?php
    
     require_once("config.php");
-    
-    $usu = new Usuario();
-    $usu -> loadById(2);
+    //CARREGAR UM USUÁRIO POR MEIO DO ID
+    //$usu = new Usuario();
+    //$usu -> loadById(2);
+    //echo $usu;
 
-    echo $usu;
+    //FUNÇÃO PARA LISTAR TODOS OS VALORES DA TABELA
+    //$lista = Usuario::getList();
+    //echo json_encode($lista);
 
+    //FUNÇÃO DE PESQUISA
+    //$pesq = Usuario::search("adm");
+    //echo json_encode($pesq);
+
+    //FUNÇÃO DE VALIDAÇÃO DE LOGIN E SENHA
+    $usuario = new Usuario();
+    $usuario -> login("Pedro Lucas","221133");
+    echo $usuario;
 ?>
