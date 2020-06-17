@@ -133,6 +133,15 @@
             ));
         }
 
+        public function delete($id){
+            $sql = new Sql();
+
+            $sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID",array(
+                ":ID"=>$id
+            ));
+
+        }
+
         //FUNÇÃO PARA TRNSFORMAR O RETORNO DO OBJETO EM UMA STRING
         public function __toString() {
             return json_encode(array(

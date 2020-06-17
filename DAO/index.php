@@ -24,9 +24,11 @@
     //$usuario->insert();
     //echo $usuario;
 
-    $usuario = new Usuario();
-    $usuario -> loadById(5);
-    $usuario -> update("professor","!@#$%¨&*()");
+    //ALTERANDO USUÁRIO
+    //$usuario = new Usuario();
+    //$usuario -> loadById(5);
+    //$usuario -> update("professor","!@#$%¨&*()");
+    //echo $usuario;
 
-    echo $usuario;
+    $deletando = Usuario::delete(7);
 ?>
