@@ -19,7 +19,14 @@
     //$usuario -> login("Pedro Lucas","221133");
     //echo $usuario;
 
-    $usuario = new Usuario("Jennifer","tinder");
-    $usuario->insert();
+    //INSERINDO UM NOVO USUÁRIO
+    //$usuario = new Usuario("Jennifer","tinder");
+    //$usuario->insert();
+    //echo $usuario;
+
+    $usuario = new Usuario();
+    $usuario -> loadById(5);
+    $usuario -> update("professor","!@#$%¨&*()");
+
     echo $usuario;
 ?>

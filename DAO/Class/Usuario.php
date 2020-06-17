@@ -119,6 +119,20 @@
             }
         }
 
+        //FUNÇÃO PARA FAZER A ALTERAÇÃO DE DADOS CADASTRAIS
+        public function update($login, $senha){
+            $this-> setLogin($login);
+            $this-> setSenha($senha);
+
+            $sql = new Sql();
+
+            $sql -> query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :SENHA WHERE idusuario = :ID", array(
+                ":LOGIN"=>$this-> getLogin(),
+                ":SENHA"=>$this->getSenha(),
+                ":ID"=>$this->getIdusuario()
+            ));
+        }
+
         //FUNÇÃO PARA TRNSFORMAR O RETORNO DO OBJETO EM UMA STRING
         public function __toString() {
             return json_encode(array(
