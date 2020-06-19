@@ -11,5 +11,5 @@
 
 ?>
 
-<a href = "<?=$base64encode?>" target="_blank">Link para outra imagem</a>
+<a href = "<?=$base64encode?>" target="_blank"> Link para outra imagem </a>
 <img src="<?=$base64encode?>"></img>
