@@ -25,7 +25,7 @@
             array_push($data,$linha);
         }
 
-        echo json_encode($data);
+        json_encode($data);
         
         fclose($file);
     }
