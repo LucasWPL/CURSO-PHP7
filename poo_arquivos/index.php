@@ -9,6 +9,7 @@
     //$test-> escreverArquivo("teste/teste3.txt",$texto);
     //$test-> excluirArquivo("teste.txt");
     //$test->excluirArquivos("teste");
+    //echo $test-> uparArquivo();
+    
 
-    echo $test-> lerCsv("usuarios.csv");
 ?>

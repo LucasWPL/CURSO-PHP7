@@ -1,7 +1,6 @@
 <?php
 
     class Archive {
-        private $file;
         
         //função para criar diretório
         public function criarDir($dir){
@@ -84,7 +83,32 @@
                 fclose($file);
             }
         }
+        
+        //função para upload de arquivos
+        public function uparArquivo(){
+            $html = "<form method='POST' enctype='multipart/form-data'>";
+            $html .= 
+                    "<input type='hidden' name='MAX_FILE_SIZE' value='30000'>
+                    <input type='file' name='arquivo'>
+                   <input type='submit' value='Enviar'>";
+            $html .= "</form>";
 
+            if($_SERVER["REQUEST_METHOD"]==="POST"){
+                $file = $_FILES["arquivo"];
+                
+                if ($file["error"]) throw new Exception("Error: ", $file["error"]);
+
+                $dirUploads = "uploads";
+                if (!is_dir($dirUploads)) mkdir($dirUploads);
+
+                if(move_uploaded_file($file['tmp_name'], $dirUploads.DIRECTORY_SEPARATOR.$file["name"])){
+                    echo "Upload realizado com sucesso.";
+                }else echo "O arquivo não foi enviado corretamente.";
+            }
+                
+            
+            return $html;
+        }
 
     }
     
