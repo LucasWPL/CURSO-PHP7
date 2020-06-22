@@ -1,0 +1,10 @@
+{
+    "name": "lucaswpl/composer",
+    "description": "PHP 7",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog": "1.*.*"
+
+    }
+}
