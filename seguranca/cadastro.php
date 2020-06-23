@@ -12,7 +12,7 @@
 
     //enviando as informações necessárias para a validação do captcha
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-        "secret"=> "6Ldrs6gZAAAAAEO7Qf8iplhmZKy_Had7fh5xxVfw",
+        "secret"=> "",//key secreta
         "response"=>$_POST["g-recaptcha-response"],
         "remoteip"=>$_SERVER["REMOTE_ADDR"]
     )));
